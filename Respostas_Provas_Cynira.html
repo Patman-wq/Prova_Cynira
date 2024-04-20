@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respostas Provas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .video-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .info-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .info-container p {
+            margin: 0 0 10px 0;
+        }
+
+        .info-container label {
+            font-weight: bold;
+        }
+
+        .info-container select, .info-container input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .info-container select {
+            cursor: pointer;
+        }
+
+        .info-container input[type="text"]::placeholder {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="A.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos HTML5.
+            </video>
+        </div>
+        <div class="info-container">
+            <p>Clique no vídeo para aprender como ver as respostas e pegar o código de acordo com sua serie e materia.</p>
+            <label for="ano">Ano:</label>
+            <select id="ano" name="ano">
+                <option value="6º">6º</option>
+                <option value="7º">7º</option>
+                <option value="8º">8º</option>
+                <option value="9º">9º</option>
+                <option value="1º">1º</option>
+                <option value="2º">2º</option>
+                <option value="3º">3º</option>
+            </select>
+            <br>
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo" placeholder="Insira o código aqui...">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para iniciar a reprodução automática com som após um breve atraso
+        window.onload = function() {
+            var video = document.getElementById('meuVideo');
+            
+            // Inicia a reprodução do vídeo após 100 milissegundos (1 segundo = 1000 milissegundos)
+            setTimeout(function() {
+                video.play();
+                video.muted = false;
+            }, 100);
+        };
+    </script>
+</body>
+</html>
