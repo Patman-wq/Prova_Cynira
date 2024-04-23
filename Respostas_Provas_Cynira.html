@@ -65,13 +65,13 @@
 <body>
     <div class="container">
         <div class="video-container">
-            <video id="meuVideo" controls>
-                <source src="A.mp4" type="video/mp4">
+            <video id="meuVideo" controls autoplay poster="Texto do seu parágrafo.png">
+                <source src="Everson Zoio falando árabe.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeos HTML5.
             </video>
         </div>
         <div class="info-container">
-            <p>Clique no vídeo para aprender como ver as respostas e pegar o código de acordo com sua serie e materia.</p>
+            <p>Clique no vídeo para aprender como ver as respostas e pegar o código de acordo com sua série e matéria.</p>
             <label for="ano">Ano:</label>
             <select id="ano" name="ano">
                 <option value="6º">6º</option>
@@ -89,16 +89,11 @@
     </div>
 
     <script>
-        // JavaScript para iniciar a reprodução automática com som após um breve atraso
-        window.onload = function() {
+        // JavaScript para iniciar a reprodução do vídeo após o carregamento da página
+        document.addEventListener('DOMContentLoaded', function() {
             var video = document.getElementById('meuVideo');
-            
-            // Inicia a reprodução do vídeo após 100 milissegundos (1 segundo = 1000 milissegundos)
-            setTimeout(function() {
-                video.play();
-                video.muted = false;
-            }, 100);
-        };
+            video.play();
+        });
     </script>
 </body>
 </html>
