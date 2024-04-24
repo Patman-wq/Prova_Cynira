@@ -23,8 +23,7 @@
         }
 
         .video-container {
-            flex: 1;
-            margin-right: 20px;
+            width: 300px; /* Largura fixa para o vídeo */
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
@@ -80,12 +79,12 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 6px;
-            background-color: #2a2a2a; /* Cor de fundo mais escura */
+            background-color: #444; /* Cor de fundo mais escura */
             color: #fff;
             font-size: 16px; /* Tamanho do texto */
             outline: none;
             transition: background-color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
         }
 
         .info-container select {
@@ -98,7 +97,7 @@
 
         .info-container input[type="text"]:focus, 
         .info-container select:focus {
-            background-color: #3a3a3a; /* Cor de fundo mais escura ao focar */
+            background-color: #555; /* Cor de fundo mais escura ao focar */
         }
 
         /* Ajuste do tamanho do poster */
@@ -143,13 +142,20 @@
         footer a:hover {
             color: #8a3df5; /* Roxo mais escuro ao passar o mouse */
         }
+
+        /* Media query para ajustar a largura do vídeo em dispositivos móveis */
+        @media only screen and (max-width: 600px) {
+            .video-container {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="video-container">
-            <video id="meuVideo" controls autoplay poster="Texto do seu parágrafo.png">
+            <video id="meuVideo" controls autoplay poster="Texto do seu parágrafo.png" playsinline>
                 <source src="Everson Zoio falando árabe.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeos HTML5.
             </video>
@@ -175,7 +181,7 @@
     </div>
 
     <footer>
-        Desenvolvido por <a href="https://patman-wq.github.io/Prova_Cynira/Respostas_Provas_Cynira.html" target="_blank">:)</a> &copy; 2024
+        Desenvolvido por <a href="#" target="_blank">:)</a> &copy; 2024
     </footer>
 
     <script>
