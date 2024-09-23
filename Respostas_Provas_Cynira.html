@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <! https://patman-wq.github.io/Prova_Cynira/Codigos.txt> 
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="Resposta.ico" type="image/x-icon">
     <title>Respostas de Provas</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Cor de fundo mais forte */
+            background-color: #1a1a2e; /* Fundo escuro com toque azul */
             color: #fff;
+            overflow-x: hidden; /* Previne overflow horizontal */
         }
     
         .container {
@@ -21,19 +24,25 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            flex-wrap: wrap;
         }
 
         .video-container {
             flex: 1;
             margin-right: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Sombra elegante */
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.05); /* Zoom suave ao passar o mouse */
         }
 
         .video-container video {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         .info-container {
@@ -41,37 +50,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #333; /* Cor de fundo mais escura */
+            background-color: #16213e; /* Azul escuro */
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra mais forte */
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Sombra elegante */
+            transition: transform 0.3s ease;
+        }
+
+        .info-container:hover {
+            transform: scale(1.02);
         }
 
         .info-container h2 {
-            color: #fff; /* Branco */
-            font-size: 40px; /* Tamanho do texto */
-            margin-bottom: 20px; /* Espaçamento inferior */
+            color: #f9f9f9;
+            font-size: 36px;
+            margin-bottom: 20px;
             text-align: center;
-            text-transform: uppercase; /* Texto em maiúsculas */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra do texto */
-            border: 2px solid #b36eff; /* Borda roxa */
-            padding: 20px; /* Espaçamento interno */
-            border-radius: 10px; /* Borda arredondada */
-            background-color: #b36eff; /* Cor de fundo roxa */
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            background: linear-gradient(135deg, #b36eff, #8a3df5); /* Degradê roxo */
+            border-radius: 10px;
         }
 
         .info-container p {
             margin: 0 0 20px 0;
-            color: #ccc; /* Cinza */
-            font-size: 18px; /* Tamanho do texto */
+            color: #dcdcdc;
+            font-size: 18px;
             text-align: justify;
+            line-height: 1.6; /* Melhor espaçamento entre linhas */
         }
 
         .info-container label {
-            font-weight: bold;
-            color: #ccc; /* Cinza */
-            font-size: 20px; /* Tamanho do texto */
-            margin-bottom: 10px; /* Espaçamento inferior */
+            font-weight: 600;
+            color: #b3b3b3;
+            font-size: 18px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
@@ -80,13 +94,13 @@
             padding: 12px;
             margin-bottom: 20px;
             border: none;
-            border-radius: 6px;
-            background-color: #2a2a2a; /* Cor de fundo mais escura */
+            border-radius: 8px;
+            background-color: #0f3460;
             color: #fff;
-            font-size: 16px; /* Tamanho do texto */
+            font-size: 16px;
             outline: none;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .info-container select {
@@ -94,55 +108,89 @@
         }
 
         .info-container input[type="text"]::placeholder {
-            color: #999;
+            color: #bbb;
         }
 
         .info-container input[type="text"]:focus, 
         .info-container select:focus {
-            background-color: #3a3a3a; /* Cor de fundo mais escura ao focar */
+            background-color: #1e508a; /* Azul mais claro ao focar */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Ajuste do tamanho do poster */
-        .video-container video {
-            object-fit: cover;
-        }
-
-        /* Estilo para o botão */
         .info-container button {
             padding: 12px 20px;
             border: none;
-            border-radius: 6px;
-            background-color: #b36eff; /* Roxo */
+            border-radius: 8px;
+            background-color: #b36eff;
             color: #fff;
             font-size: 18px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .info-container button:hover {
-            background-color: #8a3df5; /* Roxo mais escuro ao passar o mouse */
+            background-color: #8a3df5;
+            transform: translateY(-3px);
         }
 
-        /* Estilo para o rodapé */
         footer {
             text-align: center;
+            padding: 10px 0;
+            background-color: #0f3460;
+            color: #dcdcdc;
             position: fixed;
             bottom: 0;
             width: 100%;
-            padding: 10px 0;
-            background-color: #111; /* Cor de fundo mais escura */
-            color: #ccc; /* Cinza */
+            font-size: 14px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
 
         footer a {
-            color: #b36eff; /* Roxo */
+            color: #b36eff;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: #8a3df5; /* Roxo mais escuro ao passar o mouse */
+            color: #8a3df5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .video-container, .info-container {
+                margin: 0;
+                width: 100%;
+            }
+
+            .video-container {
+                margin-bottom: 20px;
+            }
+
+            .info-container h2 {
+                font-size: 28px;
+            }
+
+            .info-container p, 
+            .info-container label,
+            .info-container select,
+            .info-container input[type="text"] {
+                font-size: 16px;
+            }
+
+            .info-container button {
+                font-size: 16px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -159,16 +207,20 @@
             <h2>Onde ver Respostas?</h2>
             <p>Clique no vídeo para aprender como ver as respostas e pegar o código de acordo com sua série e matéria.
             Caso o video não apareça no seu celular, vire a tela do seu telefone para a  horizontal</p>
-            <label for="ano">Ano:</label>
-            <select id="ano" name="ano">
-                <option value="6º">6º</option>
-                <option value="7º">7º</option>
-                <option value="8º">8º</option>
-                <option value="9º">9º</option>
-                <option value="1º">1º</option>
-                <option value="2º">2º</option>
-                <option value="3º">3º</option>
+            
+            <!-- Escolha do tipo de ensino -->
+            <label for="ensino">Ensino:</label>
+            <select id="ensino" name="ensino" onchange="mostrarSeries()">
+                <option value="fundamental">Ensino Fundamental</option>
+                <option value="medio">Ensino Médio</option>
             </select>
+
+            <!-- Container para séries que aparecerão conforme a seleção -->
+            <div id="seriesContainer" style="display: none;">
+                <label for="series">Série:</label>
+                <select id="series" name="series"></select>
+            </div>
+            
             <br>
             <label for="codigo">Código:</label>
             <input type="text" id="codigo" name="codigo" placeholder="Insira o código aqui...">
@@ -181,11 +233,36 @@
     </footer>
 
     <script>
-        // JavaScript para iniciar a reprodução do vídeo após o carregamento da página
-        document.addEventListener('DOMContentLoaded', function() {
-            var video = document.getElementById('meuVideo');
-            video.play();
-        });
+        function mostrarSeries() {
+            const ensino = document.getElementById('ensino').value;
+            const seriesContainer = document.getElementById('seriesContainer');
+            const seriesSelect = document.getElementById('series');
+
+            seriesSelect.innerHTML = ''; // Limpa as opções anteriores
+
+            if (ensino === 'fundamental') {
+                seriesContainer.style.display = 'block';
+                const seriesFundamental = ['6º Ano', '7º Ano', '8º Ano', '9º Ano'];
+                seriesFundamental.forEach(serie => {
+                    const option = document.createElement('option');
+                    option.value = serie;
+                    option.text = serie;
+                    seriesSelect.appendChild(option);
+                });
+            } else if (ensino === 'medio') {
+                seriesContainer.style.display = 'block';
+                const seriesMedio = ['1º Ano', '2º Ano', '3º Ano'];
+                seriesMedio.forEach(serie => {
+                    const option = document.createElement('option');
+                    option.value = serie;
+                    option.text = serie;
+                    seriesSelect.appendChild(option);
+                });
+            } else {
+                seriesContainer.style.display = 'none';
+            }
+        }
     </script>
+
 </body>
 </html>
