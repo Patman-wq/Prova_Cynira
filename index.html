@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .form-switch {
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Cadastro</h2>
+    <form id="formCadastro">
+        <input type="text" id="raCadastro" placeholder="RA" required>
+        <input type="email" id="emailCadastro" placeholder="E-mail Institucional" required>
+        <input type="text" id="serieCadastro" placeholder="Série" required>
+        <input type="text" id="anoCadastro" placeholder="Ano" required>
+        <input type="text" id="nomeCadastro" placeholder="Nome" required>
+        <input type="password" id="senhaCadastro" placeholder="Senha" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div class="form-switch">
+        <span>Já possui uma conta? </span>
+        <button onclick="toggleForms()">Login</button>
+    </div>
+
+    <h2 style="display: none;">Login</h2>
+    <form id="formLogin" style="display: none;">
+        <input type="text" id="raLogin" placeholder="RA" required>
+        <input type="password" id="senhaLogin" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+<script>
+    const formCadastro = document.getElementById('formCadastro');
+    const formLogin = document.getElementById('formLogin');
+
+    formCadastro.onsubmit = async (e) => {
+        e.preventDefault();
+        const ra = document.getElementById('raCadastro').value;
+        const email = document.getElementById('emailCadastro').value;
+        const serie = document.getElementById('serieCadastro').value;
+        const ano = document.getElementById('anoCadastro').value;
+        const nome = document.getElementById('nomeCadastro').value;
+        const senha = document.getElementById('senhaCadastro').value;
+
+        const response = await fetch('http://localhost:3000/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ra, email, serie, ano, nome, senha }),
+        });
+
+        const data = await response.json();
+        alert(data.message || data.error);
+        formCadastro.reset();
+    };
+
+    formLogin.onsubmit = async (e) => {
+        e.preventDefault();
+        const ra = document.getElementById('raLogin').value;
+        const senha = document.getElementById('senhaLogin').value;
+
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ra, senha }),
+        });
+
+        const data = await response.json();
+        alert(data.message || data.error);
+        formLogin.reset();
+    };
+
+    function toggleForms() {
+        formCadastro.style.display = formCadastro.style.display === 'none' ? 'block' : 'none';
+        formLogin.style.display = formLogin.style.display === 'none' ? 'block' : 'none';
+        document.querySelector('h2').style.display = formLogin.style.display === 'none' ? 'block' : 'none';
+    
+    }
+    formLogin.onsubmit = async (e) => {
+    e.preventDefault();
+    const ra = document.getElementById('raLogin').value;
+    const senha = document.getElementById('senhaLogin').value;
+
+    const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ra, senha }),
+    });
+
+    const data = await response.json();
+    alert(data.message || data.error);
+
+    // Redireciona se o login for bem-sucedido
+    if (response.ok) {
+        window.location.href = "https://patman-wq.github.io/Prova_Cynira/Respostas_Provas_Cynira.html"; // Substitua pela URL do seu site
+    }
+    formLogin.reset();
+};
+
+</script>
+
+</body>
+</html>

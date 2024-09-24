@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Cor de fundo mais escura */
+    color: #ffffff; /* Cor do texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #333; /* Cor de fundo do formulário */
+    padding: 20px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra do formulário */
+    width: 300px; /* Largura do formulário */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px; /* Espaçamento inferior */
+    color: #ccc; /* Cor do texto do rótulo */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: #444; /* Cor de fundo do campo */
+    color: #ffffff; /* Cor do texto */
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #aaa; /* Cor do texto do placeholder */
+}
+
+button {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: #b36eff; /* Cor do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    cursor: pointer; /* Cursor pointer */
+    transition: background-color 0.3s ease; /* Efeito de transição */
+}
+
+button:hover {
+    background-color: #8a3df5; /* Cor do botão ao passar o mouse */
+}
+
+footer {
+    position: absolute;
+    bottom: 10px; /* Posiciona o rodapé na parte inferior */
+    text-align: center; /* Centraliza o texto do rodapé */
+    width: 100%; /* Largura total */
+    color: #ccc; /* Cor do texto do rodapé */
+}
+
+footer a {
+    color: #b36eff; /* Cor do link no rodapé */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+footer a:hover {
+    color: #8a3df5; /* Cor do link ao passar o mouse */
+}
